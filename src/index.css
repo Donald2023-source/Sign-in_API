@@ -1,0 +1,188 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+        font-family: "Nanum Gothic", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      
+}
+fieldset {
+    border: none;
+    padding: 0.7rem 0;
+}
+input{
+    padding: 12px;
+    border-radius: 6px;
+    width: 24rem;
+    font-size: 16px;
+    border: 1px solid gray;
+}
+
+h4{
+    font-weight: 600;
+    padding: 0.6rem 0;
+    color: white;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#reg{
+    padding: 0.8rem;
+    width: 16rem;
+    border-radius: 4rem;
+    border: none;
+    cursor: pointer;
+    background-color: blue;
+    color: white;
+}
+
+.next {
+    text-decoration: none;
+    padding: 1rem 0;
+    color: white;
+}
+
+body{
+    background: url('src/assets/Space Wallpaper - Sunset on a distant planet.jpg');
+    height: 100vh;
+    margin-top: 3rem;
+    overflow-y: hidden;
+}
+
+.login h1{
+    color: white;
+}
+
+.login button{
+    padding: 0.8rem;
+    width: 16rem;
+    border-radius: 4rem;
+    border: none;
+    cursor: pointer;
+    background-color: blue;
+    color: white;
+}
+
+.log{
+    padding: 4rem 0;
+}
+
+.log fieldset{
+    padding: 2rem 0;
+}
+.log img{
+    height: 3rem;
+    border-radius: 1rem;
+}
+
+.User{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 1rem;
+}
+
+.success-message{
+    color: white;
+}
+
+.success-message{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.success-message button{
+    padding: 0.8rem;
+    width: 16rem;
+    border-radius: 4rem;
+    border: none;
+    cursor: pointer;
+    background-color: blue;
+    color: white;
+}
+
+.welcome{
+    color: white;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.card_1{
+    background-color: rgba(245, 245, 245, 0.511);
+    width: 20rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.card_1:hover{
+    transition: background-color 500ms ease-in;
+}
+
+.l3{
+    text-decoration: none;
+}
+
+.card_1 img{
+    border-radius: 2rem;
+}
+
+.card_1 h4{
+    text-align: center;
+    color: black;
+}
+
+.card_2{
+    background-color: rgba(245, 245, 245, 0.511);
+    width: 20rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.card_2:hover{
+    transition: background-color 500ms ease-in;
+}
+
+.l3{
+    text-decoration: none;
+}
+
+.card_2 img{
+    border-radius: 2rem;
+}
+
+.card_2 h4{
+    text-align: center;
+    color: black;
+}
+
+.cards{
+    display: flex;
+    gap: 4rem;
+}
+@media screen and (min-width: 768px) {
+    body {
+     margin-top: 5rem;
+    }
+}

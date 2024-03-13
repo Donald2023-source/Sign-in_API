@@ -3,6 +3,7 @@ import Register from '../Regsiter';
 import Login from './LoginUser';
 import Welcome from './Component/Welcome';
 
+
 function App() {
   return (
     <>
@@ -11,6 +12,7 @@ function App() {
         <Route path='/' element={<Welcome/>}></Route>
        <Route path='/Register' element={<Register />}/>
         <Route path='/login' element={<Login />} />
+        
        </Routes>
       </BrowserRouter>
       

@@ -3,36 +3,38 @@ import { useState } from "react";
 import {registerUser} from "./src/Helper/Helper";
 import { Link } from "react-router-dom";
 import Success from "./src/Component/Success";
-
- 
-
+import { InfinitySpin } from "react-loader-spinner";
 
 const Register = () => {
     const [fullName, setFullName] = useState('');
     const [staffID, setStaffID] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
     const [successful, setSuccessful] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
     const [successMessage, setSuccessMessage] =useState('')
+    const API_URL = 'https://buyinbulk-zxvi.onrender.com/api/v1/auth/register-farmer'
+    const verify= 'https://buyinbulk-zxvi.onrender.com/api/v1/auth/verify-email'
+    const login ='https://buyinbulk-zxvi.onrender.com/api/v1/auth/login'
 
-
+// Auth Params
+//     email
+// firstName
+// lastName
+// password
+// password2
     const updateName = (event) => {
         setFullName(event.target.value);
     }
-
     const updateStaffID = (event) => {
         setStaffID(event.target.value);
     }
-
     const updateEmail = (event) => {
         setEmail(event.target.value);
     }
-
     const updatePassword = (event) => {
         setPassword(event.target.value);
     }
-
     const handleApi =async () => {
         const userData = {
             fullname: fullName,
@@ -42,10 +44,20 @@ const Register = () => {
         };
 
         try {
-            const response = await registerUser(userData);
+            setIsLoading(true)
+            const response = await registerUser(userData)
+            // .then(
+            //     (res) => {
+            //        setIsLoading(false) 
+            //        console.log('Request Completed')
+            //        console.log(res)
+            //     }
+            // );
             setSuccessful(true);
           setSuccessMessage(response.message); 
-          } catch (error) {
+          }
+          catch (error) {
+            setIsLoading(false)
             console.error('Registration failed:', error.message);
           }
         }
@@ -53,14 +65,12 @@ const Register = () => {
         event.preventDefault(); 
         handleApi()
     }
-
+    
     return (
         <>
             <div className="fill">
                 {successful ? (
-              
-                    <Success message={successMessage}/>
-                        
+                    <Success message={successMessage}/>    
                  )
                 :(
                     <form className="sign-in" onSubmit={handleSubmit}>
@@ -98,6 +108,16 @@ const Register = () => {
                 }
       
             </div>
+            {isLoading ? 
+            <div className="" style={{"height": '100vh', 'width': '100vw', 'backgroundColor': 'rgba(225, 225, 225, 0.44)', position : 'absolute', top: '0', display: "flex", justifyContent: 'center', alignItems:'center'}}>
+            <InfinitySpin
+  visible={true}
+  width="200"
+  color="#4fa94d"
+  ariaLabel="infinity-spin-loading"
+  />
+            </div>
+            : 'Not loading'}
         </>
     );
 }

@@ -2,6 +2,9 @@ import { createContext, useEffect, useState } from "react";
 import { signin } from "./Helper/Helper";
 import Cookies from "js-cookie";
 import SucLog from "./Component/suclog";
+import { Link } from "react-router-dom";
+import Dashboard from "./Component/Dashboard";
+
 
 const Login = () => {
     const [staffID, setStaffId] =useState('')
@@ -19,6 +22,8 @@ const Login = () => {
     const updatePassword = (event) => {
     setPassword(event.target.value);
 }
+
+
 const handleLogin = async () => {
     const logindata = {
       staffId: staffID,
@@ -27,7 +32,11 @@ const handleLogin = async () => {
     try {
       const response = await signin(logindata);
       setSuccessful(true);
-      setSuccessMessage(response.message)
+      setSuccessMessage(response.message);
+      setfullname(response.user.fullname);
+
+      console.log(response.user.fullname)
+
       if (response.status === 200) {
         console.log('nice');
         const myToken = response.data.token;
@@ -45,16 +54,19 @@ const handleLogin = async () => {
       console.log('error', error);
     }
     };
-     const handleSignIn = (event) => {
+  
+  const handleSignIn = async(event) => {
     event.preventDefault();
-     handleLogin()
+    await handleLogin()
      }
     return (
         <>
         <div className="login">
             {
                 successful ? (
-                   <SucLog message={successMessage}  />
+                    
+                   <SucLog fullname={fullname}  message={successMessage}/>
+                   
                 ) 
                 :
                 (
@@ -79,7 +91,7 @@ const handleLogin = async () => {
                             Login
                         </button>
                     </form>
-                    
+                   
                     </div>
                 )
             }
